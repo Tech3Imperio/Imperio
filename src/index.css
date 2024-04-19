@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Lexend;
+  src: url('./assets/fonts/Lexend-VariableFont_wght.ttf');
+}
+
 :root {
   --white-sixty: #f1efe7;
   --black-thirty: #292929;
@@ -17,6 +22,8 @@
 * {
   margin: 0;
   padding: 0;
+  background-color: var(--white-sixty);
+  color: var(--black-thirty);
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth !important;
@@ -36,6 +43,13 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.header{
+  font-family: Lexend, sans-serif;
+  font-weight: 600;
+  line-height: 4rem;
+}
+
 .paddings {
   padding: 1.5rem;
 }
