@@ -4,16 +4,32 @@
 
 @font-face {
   font-family: Lexend;
-  src: url('./assets/fonts/Lexend-VariableFont_wght.ttf');
+  src: url(./assets/fonts/Lexend.ttf);
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url(./assets/fonts/Avenir.otf);
+}
+
+@font-face {
+  font-family: Cabin;
+  src: url(./assets/fonts/Cabin.ttf);
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url(./assets//fonts/Poppins.ttf);
 }
 
 :root {
   --white-sixty: #f1efe7;
   --black-thirty: #292929;
   --dark-blue-tenth: #055c9d;
+  --light-blue-tenth: #5500ff;
   --blue-gradient: radial-gradient(
     circle,
-    rgba(85, 0, 255, 1) 0%,
+    rgb(85, 0, 255) 0%,
     rgba(0, 0, 156, 1) 22%,
     rgba(0, 0, 0, 1) 100%
   );
@@ -22,16 +38,20 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: var(--white-sixty);
-  color: var(--black-thirty);
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: Poppins;
   scroll-behavior: smooth !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--white-sixty);
+  color: var(--black-thirty);
+}
+
+header {
+  font-family: Lexend, sans-serif;
 }
 
 code {
@@ -44,7 +64,7 @@ a {
   text-decoration: none;
 }
 
-.header{
+.title {
   font-family: Lexend, sans-serif;
   font-weight: 600;
   line-height: 4rem;
@@ -58,72 +78,15 @@ a {
   width: 100%;
 }
 
-.flexCenter {
-  display: flex;
-  row-gap: 2rem;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.flexStart {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.flexEnd {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.flexColCenter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.flexColStart {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-.flexColEnd {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-}
-.flexColStart {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-}
-.flexRowStart {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-}
-.flexRowEnd {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
-}
-
 .primaryText {
-  color: #1f3e72;
+  color: var(--dark-blue-tenth);
   font-weight: bold;
   font-size: 2rem;
-  font-family: "Jost", sans-serif;
+  font-family: Avenir;
 }
 
 .secondaryText {
   color: rgb(140 139 139);
-  font-size: 0.9rem;
-  font-family: "Cabin", sans-serif;
+  font-size: 1rem;
+  font-family: Cabin;
 }
