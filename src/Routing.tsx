@@ -7,6 +7,7 @@ import {
 
 import { Home } from "./pages/Home/Home";
 import { NavBar } from "./components/NavBar/NavBar";
+import { Footer } from "./components/Footer/Footer";
 
 export const Routing = () => {
   return (
@@ -16,6 +17,7 @@ export const Routing = () => {
         <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path="/home" element={<Home />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };

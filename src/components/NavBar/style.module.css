@@ -7,35 +7,7 @@
   padding: 8px 16px;
 }
 
-.navbardiv {
-  color: var(--white-sixty);
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: normal;
-  padding: 8px 0px;
-  transition: color 0.3s ease;
-}
-
-.dropdown_content {
-  top: 100%;
-  left: 0;
-  min-width: max-content;
-  z-index: 10;
-}
-
-.dropdown:hover .dropdown_content {
-  display: block;
-}
-
-.link {
-  display: block;
-  color: var(--black-thirty);
-  transition: background-color 0.5s ease;
-}
-
-.link:hover {
-  color: var(--dark-blue-tenth);
-  transform: scale(1.05);
+.dropdown {
 }
 
 @keyframes slideIn {

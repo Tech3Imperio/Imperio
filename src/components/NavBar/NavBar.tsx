@@ -6,26 +6,21 @@ import { Squash as Hamburger } from "hamburger-react";
 
 export const NavBar = () => {
   const [nav, setNav] = useState(false);
-  const [showProductDropdown, setShowProductDropdown] = useState(false);
-  const [showProjectDropdown, setShowProjectDropdown] = useState(false);
 
   const handleNav = () => {
     setNav(!nav);
   };
 
-  const handleProductDropdown = () => {
-    setShowProductDropdown(!showProductDropdown);
-  };
-
-  const handleProjectDropdown = () => {
-    setShowProjectDropdown(!showProjectDropdown);
-  };
-
+  const products = [
+    { name: "Product1", url: "/product1" },
+    { name: "Product2", url: "/product2" },
+    { name: "Product3", url: "/product3" },
+  ];
   const navItems = [
     { text: "Home", url: "home" },
     { text: "About Us", url: "about" },
     { text: "Product", url: "product", dropdown: true },
-    { text: "Project", url: "project", dropdown: true },
+    { text: "Project", url: "project" },
     { text: "Blog", url: "blog" },
     { text: "FAQ", url: "faq" },
     { text: "Contact Us", url: "contact" },
@@ -39,33 +34,30 @@ export const NavBar = () => {
       </div>
 
       {/* Desktop Navigation */}
-      <ul className="hidden md:flex">
+      <ul className="hidden md:flex relative">
         {navItems.map((item, index) => (
           <li
             key={index}
-            className="p-4 hover:bg-dark_blue_tenth rounded-xl m-2 cursor-pointer duration-300 hover:text-black_thirty"
-            onMouseEnter={() => {
-              if (item.dropdown) {
-                item.text === "Product"
-                  ? setShowProductDropdown(true)
-                  : setShowProjectDropdown(true);
-              }
-            }}
-            onMouseLeave={() => {
-              setShowProductDropdown(false);
-              setShowProjectDropdown(false);
-            }}
+            className={`p-4 hover:bg-dark_blue_tenth rounded-xl m-2 cursor-pointer duration-300 hover:text-black_thirty relative group `}
           >
-            <Link
-              to={item.url}
-              className={`${style.navbar} primaryText`}
-              onClick={() => {
-                setShowProductDropdown(false);
-                setShowProjectDropdown(false);
-              }}
-            >
+            <Link to={item.url} className={`${style.navbar} primaryText `}>
               {item.text}
             </Link>
+            {/* DropDown */}
+            {item.dropdown && (
+              <ul
+                className={`rounded-lg  space-y-2 w-full absolute top-full left-0 hover:block group-hover:block hidden  bg-transparent text-black_thirty shadow-lg mt-2`}
+              >
+                {products.map((product, position) => (
+                  <li
+                    key={position}
+                    className="rounded-lg bg-white_sixty hover:text-black border-grey hover:border-black border-2 text-[grey] px-4 py-2"
+                  >
+                    <Link to={product.url}>{product.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))}
       </ul>
@@ -84,66 +76,36 @@ export const NavBar = () => {
         }
       >
         {/* Mobile Logo */}
-        <div className="w-full m-4 flex justify-center">
+        <li className="w-full m-4 flex justify-center">
           <img src={imageLogo[0]} alt="Logo" className="w-32 h-auto mr-2" />
-        </div>
+        </li>
 
         {/* Mobile Navigation Items */}
         {navItems.map((item, index) => (
           <li
             key={index}
-            className="p-4 border-b rounded-xl hover:bg-dark_blue_tenth duration-300 hover:text-black cursor-pointer border-gray-600"
-            onMouseEnter={() => {
-              if (item.dropdown) {
-                item.text === "Product"
-                  ? setShowProductDropdown(true)
-                  : setShowProjectDropdown(true);
-              }
-            }}
-            onMouseLeave={() => {
-              setShowProductDropdown(false);
-              setShowProjectDropdown(false);
-            }}
+            className={`p-4 border-b rounded-xl hover:bg-dark_blue_tenth duration-300 hover:text-black cursor-pointer border-gray-600 relative group`}
           >
-            <Link
-              to={item.url}
-              className={`${style.navbar} primaryText`}
-              onClick={() => {
-                setShowProductDropdown(false);
-                setShowProjectDropdown(false);
-              }}
-            >
+            <Link to={item.url} className={`${style.navbar} primaryText`}>
               {item.text}
             </Link>
+            {item.dropdown && (
+              <ul
+                className={`${style.dropdown} space-y-2 w-[65%] absolute top-[-10px] left-[101%] hidden bg-white_sixty text-black_thirty shadow-lg mt-2 group-hover:block `}
+              >
+                {products.map((product, position) => (
+                  <li
+                    key={position}
+                    className=" rounded-lg bg-white_sixty hover:text-black border-grey hover:border-black hover:block border-2 text-black px-4 py-2"
+                  >
+                    <Link to={product.url}>{product.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))}
       </ul>
-
-      {/* Product Dropdown */}
-      {showProductDropdown && (
-        <div className="absolute top-24 left-0 bg-white border border-gray-300 rounded-lg p-4">
-          <Link to="/product-1" className="block mb-2 hover:text-blue-700">
-            Product 1
-          </Link>
-          <Link to="/product-2" className="block hover:text-blue-700">
-            Product 2
-          </Link>
-        </div>
-      )}
-
-      {/* Project Dropdown */}
-      {showProjectDropdown && (
-        <div className="absolute top-24 left-0 bg-white border border-gray-300 rounded-lg p-4">
-          <Link to="/project-1" className="block mb-2 hover:text-blue-700">
-            Project 1
-          </Link>
-          <Link to="/project-2" className="block hover:text-blue-700">
-            Project 2
-          </Link>
-        </div>
-      )}
     </div>
   );
 };
-
-export default NavBar;

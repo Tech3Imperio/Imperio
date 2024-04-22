@@ -67,7 +67,7 @@ a {
 .title {
   font-family: Lexend, sans-serif;
   font-weight: 600;
-  line-height: 4rem;
+  line-height: 1rem;
 }
 
 .paddings {
@@ -79,14 +79,9 @@ a {
 }
 
 .primaryText {
-  color: var(--dark-blue-tenth);
-  font-weight: bold;
-  font-size: 2rem;
   font-family: Avenir;
 }
 
 .secondaryText {
-  color: rgb(140 139 139);
-  font-size: 1rem;
   font-family: Cabin;
 }
